@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,th,td{
+            border: 1px solid;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+       
+    </style>
+</head>
+<body>
+    <div>
+
+        <table collspan="2">
+            <tr>
+                <th>Numero</th>
+                <th>Nom</th>
+            <th>Note</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>Alami</td>
+            <td>12.45</td>
+            <td><a href="" id="edit">Edit</a> | <a href="" id="delete">Delete</a></td>
+        </tr>
+       
+    </table>
+</div>
+    <div class="contain">
+        <div >
+            <div>
+                <label> Numero</label>
+            </div>
+            <div >
+                <input class="numero" type="text">
+            </div>
+        </div>
+        <div >
+            <div>
+                <label> Nom</label>
+            </div>
+            <div>
+                <input class="nom" type="text">
+            </div>
+        </div>
+            <div>
+            <div>
+                <label> Note</label>
+            </div>
+            <div >
+                <input class="note" type="text">
+            </div>
+        </div>
+            <button>Ajouter</button>
+        </div>
+
+    </div>
+
+    <script>
+        let bt=document.querySelector("button")
+        bt.addEventListener("click",function(){
+
+            let nom=document.querySelector(".nom")
+            let num=document.querySelector(".numero")
+            let note=document.querySelector(".note")
+
+        
+            let ter=document.createElement("tr")
+            document
+            ter.innerHTML=`<td id="nu">${num.value}</td><td id="no">${nom.value}</td><td id="nte">${note.value}</td><td><a href="" id="edit">Edit</a> | <a href="" id="delete">Delete</a></td> `
+            num.value=" "
+            nom.value=" "
+            note.value=" "
+            num.focus()
+        })
+            let ed=document.querySelector("#edit")
+            let del=document.querySelector("#delete")
+            del.addEventListener("click",function(){
+            let nom=document.querySelector(".nom").value
+            let num=document.querySelector(".numero").value
+            let note=document.querySelector(".note").value
+            num.remove()
+            nom.remove()
+            note.remove()
+        })
+        ed.addEventListener("click",function(){
+            let nom=document.querySelector(".nom")
+            let num=document.querySelector(".numero")
+            let note=document.querySelector(".note")
+            
+            let nu=document.querySelector("#nu").value          
+            let no=document.querySelector("#no").value
+            let nte=document.querySelector("#nte").value 
+            nom.value=this.nu
+            num.value=this.no
+            note.value=this.nte
+
+        })
+
+            //document.table.appendChild(ter)
+            //let td1=document.createElement("td")
+            //let td2=document.createElement("td")
+            //let td3=document.createElement("td")
+            //let td4=document.createElement("td")
+            //td1.textContent=num
+            //td2.textContent=nom  
+            //td3.textContent=note
+            //td4.textContent=`<a href="">Edit</a> | <a href="">Delete</a>`
+            //tr.appendChild(td1)
+            //tr.appendChild(td2)
+            //tr.appendChild(td3)
+            //tr.appendChild(td4)
+
+    </script>
+</body>
+</html>

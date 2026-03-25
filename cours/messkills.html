@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Mes skills</h1>
+    <p>Cocher vos languages préférés :</p>
+     <div>
+        <input type="checkbox" id="" name="check-lg" value="HTML">HTML
+     </div>    
+     <div>
+        <input type="checkbox" id="" name="check-lg" value="Python">Python
+     </div>
+     <div>
+        <input type="checkbox" id="" name="check-lg"  value="Js">Js
+     </div>
+     <div>
+        <input type="checkbox" id="" name="check-lg" value="Mysql">Mysql
+     </div>
+     <div>
+        <input type="checkbox" id="" name="check-lg" value="PHP">PHP
+     </div>
+     <div>
+    <button id="bt">Afficher</button>
+    </div>
+    <div class="res">
+
+    </div>
+    <script>
+        let a=document.querySelectorAll("input[type=checkbox]")
+        let c=document.querySelector("button")
+
+        c.addEventListener("click", function(){
+            let output="<ul>"
+            a.forEach(function(ch){
+               if (ch.checked){
+                output+=`<li>${ch.value}</li>`
+            }
+            })
+            output+="</ul>"
+          document.querySelector(".res").innerHTML=output
+        })
+        
+        
+    </script>
+
+
+
+</body>
+</html>

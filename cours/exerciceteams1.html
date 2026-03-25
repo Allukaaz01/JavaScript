@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page</title>
+</head>
+<body>
+    <input type="text" id="num">
+    <p id="p-num">
+
+    </p>
+    <p id="p-somme"></p>
+    <p id="p-moyenne"></p>
+    <p id="p-max"></p>
+    <p id="p-min"></p>
+    <div class="btn-contain">
+        <button onclick="Ajouter()">Ajouter</button>
+        <button onclick="Afficher()">Afficher</button>
+        <button onclick="Somme()">Somme</button>
+        <button onclick="Moyenne()">Moyenne</button>
+        <button onclick="Maximum()">Max</button>
+        <button onclick="Minimum()">Min</button>
+    </div>
+
+    <script>
+        let Table=[]
+        function Ajouter(){
+            let a=document.getElementById("num")
+            if (!a.value || isNaN(a.value)){
+                alert("Veuillez saisir un nombre ")
+                a.focus()
+                return;
+            }
+            Table.push(a.value)
+            a.value=""
+            a.focus()
+        }
+
+        function Afficher(){
+            if(Table.length!==0){
+
+            let result="<ul>"
+            Table.forEach(i=>{
+                result+=`<li>${i}</li>`
+            })
+            result+="</ul>"
+            document.getElementById("p-num").innerHTML=result
+            }
+            else{
+                alert("Le contenue est vide ")
+            }
+        }
+        function getSomme(){
+            let som=0
+                Table.forEach(n=>som+=Number(n))
+                return som;
+        }
+        function Somme(){
+            if(Table.length!==0){
+                let s=getSomme()
+                document.getElementById("p-somme").innerHTML=`La somme est ${s}`
+            }
+            else{
+                 alert("Le contenue est vide ")
+            }
+        }
+        function Moyenne(){
+            let d=getSomme()
+            let m=d/Table.length
+            document.getElementById("p-moyenne").innerHTML=`La moyenne est ${m}`
+        }
+        function Maximum(){
+            let a=Math.max(...Table)
+            document.getElementById("p-max").innerHTML=`Le maximum est ${a}`
+        }
+        function Minimum(){
+            let b=Math.min(...Table)
+            document.getElementById("p-min").innerHTML=`Le minimum est ${b}`
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let x=setInterval(()=> {
+            let today=new Date();
+            let heures=today.getHours();
+            let minutes=today.getMinutes();
+            let secondes=today.getSeconds();
+            if(heures<10) {heures="0"+heures};
+            if(minutes<10){minutes="0"+minutes};
+            if(secondes<10){secondes="0"+secondes};
+            lbl.textContent=`${heures}:${minutes}:${secondes}`
+        })
+    </script>
+</body>
+</html>

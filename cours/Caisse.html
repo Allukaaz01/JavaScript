@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caisse</title>
+    <style>
+        body{
+            border: solid 1px black;
+            width: 800px;
+            margin-left: 200px;
+            margin-top: 100px;
+            
+        }
+        .contain{
+            display: grid;
+            grid-template-columns: 25% 65%;
+            gap:5%;
+            margin: 10px 0px 10px 0px;
+            align-items: center;
+        }
+        input{
+            width: 80%;
+            height: 30px;
+            text-align: center;
+        }
+        label{
+            padding: 10px;
+            font-size: larger;
+        }
+        .rer{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+        }
+        button{
+            margin:2px 15px 2px 15px;
+            font-weight: bold;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="contain">
+        <div>
+            <label >Montant d'achat </label>
+        </div>
+        <div>
+            <input type="text" id="macha">
+        </div>
+    </div>
+    <div class="rer">
+        <button onclick="reset()">Reset</button>
+        <button onclick="Afficher()">Afficher</button>
+    </div>
+    <div class="contain">
+        <div>
+            <label >Montant de rèduction </label>
+        </div>
+        <div>
+            <input type="text" id="reduction">
+        </div>
+    </div>
+    <div class="contain">
+        <div>
+            <label >Montant à payer </label>
+        </div>
+        <div>
+            <input type="text" id="paiement">
+        </div>
+    </div>
+    <script>
+        let mt=document.getElementById("macha")
+        let mr=document.getElementById("reduction")
+        let paie=document.getElementById("paiement")
+        function Afficher(){
+            if (mt.value >=5000 ){
+                let t=Number(mt.value)*0.2
+                let pp=Number(mt.value)-t
+                
+                document.getElementById("reduction").value=t
+                document.getElementById("paiement").value=pp
+            }
+            else if ((mt.value >=4000)&&(mt.value<5000) ){
+                let t=Number(mt.value)*0.15
+                let pp=Number(mt.value)-t
+                
+                document.getElementById("reduction").value=t
+                document.getElementById("paiement").value=pp
+            }
+            else if ((mt.value >=3000)&&(mt.value<4000) ){
+                let t=Number(mt.value)*0.1
+                let pp=Number(mt.value)-t
+                
+                document.getElementById("reduction").value=t
+                document.getElementById("paiement").value=pp
+            }
+            else if ((mt.value >=2000)&&(mt.value<3000) ){
+                let t=Number(mt.value)*0.05
+                let pp=Number(mt.value)-t
+                
+                document.getElementById("reduction").value=t
+                document.getElementById("paiement").value=pp
+            }
+            else if (mt.value<2000) {
+                alert("Le montant minimum pour beneficier de reduction est 2000")
+            }
+        }
+        function reset(){
+            mt.value=""
+            mr.value=""
+            paie.value=""
+            mt.focus()
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Convertisseur de Devis</h1>
+    <div>
+        <label>Taper votre Montant: </label>
+        <input type="text" name="montant" id="mt">
+    </div>
+    <div>
+        <input type="radio" name="devis">Dh -> Euro
+        <input type="radio" name="devis">Euro -> Dh
+    </div>
+    <button>Afficher</button>
+    <div id="result">
+
+    </div>
+    <script>
+        let a=document.querySelector("input[type=text]")
+        let b=document.querySelectorAll("input[type=radio]")
+        let c=document.querySelector("button")
+        c.addEventListener("click", function(){
+            let output="<p>"
+            if (b[0].checked){
+                let conve=Number(a.value) * 10
+                output=conve
+            }
+            else if (b[1].checked){
+                let conve=Number(a.value) / 10
+                output=conve
+            }
+            else {
+            alert("veuillez bien choisir une operation svp")
+            }
+        output +="</p>"
+        document.getElementById("result").innerHTML=output
+        })
+    </script>
+</body>
+</html>

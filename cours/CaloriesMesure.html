@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAlAI</title>
+    <style>
+        .contain{
+            display: grid;
+            grid-template-columns: 30% 50% 10% ;
+        }
+        input[type=text]{
+            width: 90%;
+            padding: 6px;
+            text-align: center;
+        }
+        h1,h4,h3{text-align: center;}
+        .con{
+            display: flex;
+            align-items: start;
+            justify-content: center;
+            margin-top: 6px;
+        }
+        p{
+            display: flex;
+            align-items: center;
+        }
+        .btntn{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calcule valeur energetique du repas</h1>
+    <h4>Choisir les aliments qui composent votre repas</h4>
+    <div class="contain">
+        <!--1er colonnes-->
+        <div class="con">
+            <input type="checkbox" id="pain">Pain
+        </div>
+        <div>
+           <input type="text" id="p-1">
+        </div>
+        <div>
+            <p>grammmes</p>
+        </div>
+        <!--2eme colonnes-->
+        <div class="con">
+            <input type="checkbox" id="viande">Viande
+        </div>
+        <div>
+           <input type="text" id="v-1">
+        </div>
+        <div>
+            <p>grammmes</p>
+        </div>
+        <!--3er colonnes-->
+        <div class="con">
+            <input type="checkbox" id="legume">Legumes
+        </div>
+        <div>
+           <input type="text" id="l-1">
+        </div>
+        <div>
+            <p>grammmes</p>
+        </div>
+        <!--4er colonnes-->
+        <div class="con">
+            <input type="checkbox" id="banane">Banane
+        </div>
+        <div>
+           <input type="text" id="b-1">
+        </div>
+        <div>
+            <p>Unités</p>
+        </div>
+        <!--5er colonnes-->
+        <div class="con">
+            <input type="checkbox" id="pomme">Pomme
+        </div>
+        <div>
+           <input type="text" id="p-2">
+        </div>
+        <div>
+            <p>Unités</p>
+        </div>
+        <!--6er colonnes-->
+        <div class="con">
+            <input type="checkbox" id="yaourt">Yaourt
+        </div>
+        <div>
+           <input type="text" id="y-1">
+        </div>
+        <div>
+            <p>Unités</p>
+        </div>
+    </div>
+    <div class="btntn">
+        <button class="nueva">Nouveau</button>
+        <button class="cuela">Calculer</button>
+    </div>
+    <h3>La valeur energetique de votre repas est</h3>
+    <div class="contain">
+        <div></div>
+        <div>
+           <input type="text" id="res" readonly>
+        </div>
+        <div>
+            <p>Kilo Calories</p>
+        </div>
+    </div>
+    <script>
+        let pg=document.querySelector("#p-1")
+        let vg=document.querySelector("#v-1")
+        let lg=document.querySelector("#l-1")
+        let bg=document.querySelector("#b-1")
+        let pog=document.querySelector("#p-2")
+        let yg=document.querySelector("#y-1")
+        let result=document.querySelector("#res")
+        let nv=document.querySelector(".nueva")
+        let clc=document.querySelector(".cuela")
+        let checkp=document.querySelector("#pain")
+        let checkv=document.querySelector("#viande")
+        let checkl=document.querySelector("#legume")
+        let checkb=document.querySelector("#banane")
+        let checkpog=document.querySelector("#pomme")
+        let checky=document.querySelector("#yaourt")
+        clc.addEventListener("click",function(){
+            let resultat=0
+            if(checkp.checked){
+                resultat+=Number(pg.value)*2.75
+            }
+            if (checkv.checked){
+                resultat+=Number(vg.value)*1.8
+            }
+            if (checkl.checked){
+                resultat+=Number(lg.value)*0.4
+            }
+            if (checkb.checked){
+                resultat+=Number(bg.value)
+            }
+            if (checkpog.checked){
+                resultat+=Number(pog.value)
+            }
+            if (checky.checked){
+                resultat+=Number(yg.value)
+            }
+            result.value=resultat.toFixed(2)
+            checkbox.addEventListener("change",function(){
+            input.disabled=!checkbox.checked
+            }) 
+            
+        })
+        
+        nv.addEventListener("click",function(){
+            pg.value=" "
+            vg.value=" "
+            lg.value=" "
+            bg.value=" "
+            pog.value=" "
+            yg.value=" "
+            result.value=" "
+            
+
+        })
+        //review
+        function toggleInput(checkbox, input){
+        input.disabled = !checkbox.checked;
+        }
+
+        checkp.addEventListener("change", () => toggleInput(checkp, pg));
+        checkv.addEventListener("change", () => toggleInput(checkv, vg));
+        checkl.addEventListener("change", () => toggleInput(checkl, lg));
+        checkb.addEventListener("change", () => toggleInput(checkb, bg));
+        checkpog.addEventListener("change", () => toggleInput(checkpog, pog));
+        checky.addEventListener("change", () => toggleInput(checky, yg));
+        
+        /* start with inputs disabled */
+        pg.disabled = true
+        vg.disabled = true
+        lg.disabled = true
+        bg.disabled = true
+        pog.disabled = true
+        yg.disabled = true
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">                                                                          
+    <title>Document</title>
+    <style>
+        .maclasse{
+            color:orange;
+            background-color: rgb(35, 199, 148);
+            
+
+        }
+    </style>
+</head>
+<body><!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->           
+    <div></div>
+    <ul>
+        <li>Developpement</li>
+        <li>Reseaux</li>
+        <li>Gestion</li>
+        <li>Commerce</li>
+    </ul>
+    <script>
+        //creation d'un titre
+        let h=document.createElement("h1");
+        //definir un texte pour h
+        h.textContent="Titre from JS"
+        //l'element sera enfant de l'element body
+        document.body.appendChild(h)
+        //identifier un parent
+        let parent=document.querySelector("div")
+        //creation d'un element parent p
+        let para=document.createElement("p")
+        para.textContent="une paragraphe"
+        //l'element para aura comme style celui definit dans classe de style maclasse
+        para.setAttribute("class","maclasse")
+        parent.appendChild(para);
+        let ul=document.querySelector("ul")
+        let opt=document.createElement("li");
+        opt.textContent="Logistique";
+        ul.appendChild(opt)
+        //creation d'un element 
+        let img=document.createElement("img")
+        img.src="Capture12.PNG"
+        img.width=100;
+        img.height=100;
+        parent.appendChild(img)
+
+        //creation d'un element select
+        let select=document.createElement("select")
+        let opt1=document.createElement("option")
+        let opt2=document.createElement("option")
+        opt1.textContent="Rouge"
+        opt1.value="Rouge"
+        opt2.textContent="Bleu"
+        opt2.value="Bleu"
+        select.appendChild(opt1)
+        select.appendChild(opt2)
+        document.body.appendChild(select)
+        //creation zone de texte element input
+        let txt=document.createElement("input")
+       txt.setAttribute("type","text")
+        document.body.appendChild(txt)
+       // creation d'un lien vers google.co qui s'ouvre dans une nouvelle fenetre
+       let link=document.createElement("a");
+       link.href="https://www.google.com";
+       link.textContent="go to google.com";
+       link.target="blank";
+       document.body.appendChild(link);
+       //creation d'une boutton
+       let btn=document.createElement("button")
+       btn.textContent="Supprimer"
+       document.body.appendChild(btn)
+       btn.addEventListener("click",function(){
+        //alert("button from JS")
+        //exemple supprimons le lien
+        //Suppression
+        rep=confirm("Vouler vraiment ")
+        if (rep){
+            //1er methode  cette methode laissse la tracibilite dans la console
+            //document.body.removeChild(link)
+            //2eme methode cette methode ne lisse pas la tracibilite dans la console
+            link.remove()
+        }
+
+    })
+
+       
+
+
+        </script>
+</body>
+</html>

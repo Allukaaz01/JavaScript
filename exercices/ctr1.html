@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        //construction du tableau
+        let table=document.createElement("table")
+        document.body.appendChild(table)
+        let tr=document.createElement("tr")
+        table.appendChild(tr)
+        let  th1=document.createElement("th")
+        let  th2=document.createElement("th")
+        let  th3=document.createElement("th")
+        let  th4=document.createElement("th")
+        th1.textContent="Numero"
+        th2.textContent="Nom"
+        th3.textContent="Note"
+        th4.textContent="Action"
+        tr.appendChild(th1)
+        tr.appendChild(th2)
+        tr.appendChild(th3)
+        tr.appendChild(th4)
+        table.style.border="solid 1px black"
+        tr.style.border="solid 1px black"
+        th1.style.border="solid 1px black"
+        th2.style.border="solid 1px black"
+        th3.style.border="solid 1px black"
+        th4.style.border="solid 1px black"
+        //Construction du boutton
+        let bt=document.createElement("button")
+        bt.textContent="Ajouter"
+        document.body.appendChild(bt)
+       
+        //construction du zoone de saisie
+        let divall=document.createElement("div")
+        document.body.appendChild(divall)
+        
+        let div=document.createElement("div")
+        document.body.appendChild(div)
+        let label=document.createElement("label")
+        label.textContent="Numero"
+        let input=document.createElement("input")
+        div.appendChild(label)
+        div.appendChild(input)
+        input.setAttribute("type","text")
+        input.setAttribute("id","inp-1")
+
+        let div2=document.createElement("div")
+        document.body.appendChild(div2)
+        let label2=document.createElement("label")
+        label2.textContent="Nom"
+        let input2=document.createElement("input")
+        div.appendChild(label2)
+        div.appendChild(input2)
+        input2.setAttribute("type","text")
+        input2.setAttribute("id","inp-2")
+
+        let div3=document.createElement("div")
+        document.body.appendChild(div3)
+        let label3=document.createElement("label")
+        label3.textContent="Note"
+        let input3=document.createElement("input")
+        div.appendChild(label3)
+        div.appendChild(input3)
+        input3.setAttribute("type","text")
+        input3.setAttribute("id","inp-3")
+        //container for div
+        divall.appendChild(div)
+        divall.appendChild(div2)
+        divall.appendChild(div3)
+
+        // retornon
+
+        bt.addEventListener("click",function(){
+            
+            
+          let num=document.querySelector("#inp-1")  
+          let nom=document.querySelector("#inp-2")  
+          let note=document.querySelector("#inp-3")  
+        if((num.value=" ")&&(nom.value=" ") &&(note.value=" ")){
+                alert("Veuilez d'abord saisir les données")
+            }
+        else {
+
+                let   td1=document.createElement("td")
+                td1.setAttribute("id","d-1")
+                let   td2=document.createElement("td")
+          td2.setAttribute("id","d-2")
+          let   td3=document.createElement("td")
+          td3.setAttribute("id","d-3")
+          ff=td3.getAttribute("id")
+          let   td4=document.createElement("td")
+          td4.setAttribute("id","d-4")
+          let tr1=document.createElement("tr")
+          table.appendChild(tr1)
+          tr1.appendChild(td1)
+            tr1.appendChild(td2)
+            tr1.appendChild(td3)
+            tr1.appendChild(td4)
+            td1.textContent=num.value
+            td2.textContent=nom.value
+            td3.textContent=note.value
+            //
+            let apert1=document.createElement("a")
+            td4.appendChild(apert1)
+            apert1.textContent="edit"
+            apert1.setAttribute("href"," ")
+            apert1.setAttribute("id","edt")
+            //
+            let span=document.createElement("span")
+            td4.appendChild(span)
+            span.textContent="  |  "
+            
+            //
+            let apert2=document.createElement("a")
+            td4.appendChild(apert2)
+            apert2.textContent="delete"
+            apert2.setAttribute("href"," ")
+            apert2.setAttribute("id","delete")
+            //
+            tr1.style.border="solid black 1px"
+            td1.style.border="solid black 1px"
+            td2.style.border="solid black 1px"
+            td3.style.border="solid black 1px"
+            td4.style.border="solid black 1px"
+            
+            num.value=" "
+            nom.value=" "
+            note.value=" "
+            
+            let hyp1=document.getElementById("edt")
+            hyp1.addEventListener("click",function(){
+                //let dd1=document.querySelector("#d-1").value
+                //let dd2=document.querySelector("#d-2").value
+                //let dd3=document.querySelector("#d-3").value
+                //let num=document.querySelector("#inp-1")  
+                //let nom=document.querySelector("#inp-2")  
+                //let note=document.querySelector("#inp-3")  
+                num.textContent=hyp1.td1.value
+                nom.textContent=hyp1.td2.value
+                note.textContent=hyp1.td3.value
+            })
+            let hyp2=document.getElementById("delete")
+            hyp2.addEventListener("click",function(){
+                tr1.remove()
+            })
+        }
+        })
+    </script>
+</body>
+</html>

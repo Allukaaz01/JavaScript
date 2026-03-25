@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            
+            margin-left:35%; 
+            height: 100vh;
+        }
+        .contain{
+          margin-bottom: 10px;
+          margin-top: 10px;
+        }
+        label{
+            width: 30%;
+        }
+        button{
+            margin-right: 30px;
+            margin-left: 30px;
+        }
+        #R-num{
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculator App</h1>
+        <div class="contain">
+            <label for="F-num">First Number </label>
+            <input type="text" id="F-num">
+        </div>
+        <div class="contain">
+            <label for="S-num">First Number </label>
+            <input type="text" id="S-num">
+        </div>
+        <div>
+            <button onmouseover="reset()">Reset</button>
+            <button onclick="Calculer()">Calculer</button>
+        </div>
+        <div class="contain">
+            <label for="R-num">Resultat </label>
+            <input type="text" id="R-num">
+        </div>
+    </div>
+    <script>
+        //document.getElementById("") ==> permet d'acceder à un élément via son unique ID
+        //Pour lire le contenue d'un element on ecrirt document.getElementById("").innnerHTML
+        //Pour lire le contenue d'un input on ecrirt document.getElementById("").value
+        //Pour modifier le contenue d'un element on ecrirt document.getElementById("").innnerHTML="new value"
+        //Pour modifier le contenue d'un input on ecrirt document.getElementById("").value="new value"
+        function reset()
+        {
+            num1.value=""
+            num2.value=""
+            result.value=""
+            num1.focus()
+
+
+        }
+        let num1=document.getElementById("F-num")
+        let num2=document.getElementById("S-num")
+        let result=document.getElementById("R-num")
+
+        function Calculer()
+        {
+            if (!num1.value ||isNaN(num1.value)){
+                alert("Veuillez saisir un nombre")
+                num1.value=""
+                num1.focus()
+                return ;
+            }
+            if (!num2.value ||isNaN(num2.value)){
+                alert("Veuillez saisir un nombre")
+                num2.value=""
+                num2.focus()
+                return;
+            }
+            let som =Number(num1.value) +Number(num2.value);        
+            result.value=som
+
+        }
+    </script>
+</body>
+</html>

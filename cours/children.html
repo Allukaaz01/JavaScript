@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>developpemment digital</h1>
+        <p class="para">Lorem ipsum dolor sit.</p>
+        <img src="Artur Beterbiev.jpeg" width="150px"  alt="">
+        <a href="https://www.google.com/?hl=fr">Google</a><!--commentaire-->                                                                                                                                                             
+    </div>
+    <script>
+        let master=document.querySelector('div')
+        //afficher les enfants de l'element master :
+        console.log(master.children);
+        //afficher le nombre d'enfants du master:
+        console.log(master.children.length);
+        //afficher les noeuds de l'element master
+        console.log(master.childrenNodes);
+        //afficher le nombre de noeuds
+        console.log(master.childNodes.length)
+        //afficher le premier enfant:
+        //1er methode:
+        console.log(master.children[0]);
+        //2eme methode
+        console.log(master.firstElementChild);
+        //le dernier enfant de l'element master
+        console.log(master.lastElementChild)
+        //le dernier noeuds de l'element master
+        console.log(master.lastChild)
+        //frere suivant
+        let first=master.firstElementChild
+        console.log(first.nextElementSibling);
+        //changer la couleur di fond du paragraphe
+        master.children[1].style.backgroundColor='blue';
+        master.children[1].style.color='orange';
+        //precedant
+        let last=master.lastElementChild
+        console.log(last.previousElementSibling);
+        //identifiernle parent du paragraphe
+        let para=document.querySelector('p')
+        console.log(para.parentElement)
+        console.log(para.parentElement.parentElement)
+
+
+
+
+    </script>
+</body>
+</html>

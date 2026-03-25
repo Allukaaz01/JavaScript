@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delibiration</title>
+</head>
+<body>
+    <h1>Délibération de fin d'année</h1>
+    <div>
+        <label for="annee">Année de formation :</label>
+        <select  name="" id="formation">
+            <option  name="opt" value="1" selected>1ere année</option>
+            <option name="opt" value="2" >2ème année</option>
+        </select>
+    </div>
+    <div>
+        Deja Redoublant<input type="checkbox">
+    </div>
+    <div>
+        <label>Moyenne général :</label>
+        <input type="text" id="moyene">
+    </div>
+    <div>
+        <label>Nombre total d'abscence :</label>
+        <input type="text" id="nbre-a">
+    </div>
+    <button class="buttone">Ok</button>
+    <div>
+        <label> decision </label>
+        <input type="text" id="resultat" readonly>
+    </div>
+
+    <script>
+        let a=document.querySelector("#formation")
+        let b=document.querySelector("input[type=checkbox]")
+        let mg=document.querySelector("#moyene")
+        let abs=document.querySelector("#nbre-a")
+        let result=document.querySelector("#resultat")
+        let btn=document.querySelector(".buttone")
+        //let decision="nnn"
+        btn.addEventListener("click",function(){
+            if((Number(mg.value)>=10) &&(Number(mg.value)<20)){
+                result.value="Admis"
+            }
+            else if (Number(a.value)==1){
+                if ((Number(mg.value)>=9)&&(Number(mg.value)<10)){
+                    if (Number(abs.value)>=30){
+                        if (b.checked){
+                            result.value="Elimine"
+                        }
+                        else{
+                            result.value="Redouble"
+                        }
+                    }
+                    else{
+                        result.value="Rachete"
+                    }
+                }
+                else if((Number(mg.value)<9)){
+                    if (b.checked){
+                        result.value="Elimne"
+                    }
+                    else{
+                        result.value="Redouble"
+                    }
+                }
+            }
+
+            else if (Number(a.value)==2){
+                if ((Number(mg.value)>=9)&&(Number(mg.value)<10)){
+                    if (Number(abs.value)>=30){
+                        if (b.checked){
+                            result.value="Elimine"
+                        }
+                        else{
+                            result.value="Redouble"
+                        }
+                    }
+                    else{
+                        result.value="Admis avec Bonus"
+                    }
+                }
+                else if((Number(mg.value)<9.5)){
+                    if (b.checked){
+                        result.value="Elimne"
+                    }
+                    else{
+                        result.value="Redouble"
+                    }
+                }
+            }
+
+            else {
+                alert("Veuillez taper les bonnes informations")
+            }
+        })
+        
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+    <h1>simple calculatrice<h1>
+    <div>
+        <label>Premier nombre :</label>
+        <input type="text" id="p-nbr">
+    </div>
+    <div>
+        <label>Second nombre :</label>
+        <input type="text" id="s-nbr">
+    </div>
+    <div>
+        <label for="operation">Choisir une operation :</label>
+        <select id="operation" >
+            <option value="+">addition</option>
+            <option value="-">Soustraction</option>
+            <option value="*">Multiplication</option>
+            <option value="/">division</option>
+        </select>
+    </div>
+    </form>
+    <button id="btn">Calculer</button>
+    <div id="output"></div>
+    
+
+    <script>
+        let n1=document.getElementById("p-nbr")
+        let n2=document.getElementById("s-nbr")
+        let op=document.getElementById("operation")
+        let btn=document.getElementById("btn")
+        let output=document.getElementById("output")
+        btn.addEventListener("click",function(){
+        
+
+            switch(op.value)
+            {
+                case "+": 
+                        let som=Number(n1.value)+Number(n2.value);
+                        output.innerHTML=`<h3> La somme est ${som}</h3>`;
+                        break
+
+                case "-": 
+                        let sous=Number(n1.value)-Number(n2.value);
+                        output.innerHTML=`<h3> La soustraction est ${sous}</h3>`;
+                        break
+                case "*": 
+                        let mult=Number(n1.value)*Number(n2.value);
+                        output.innerHTML=`<h3> Le produit est ${mult} </h3>`
+                        break
+
+                case "/": 
+                    if(Number(n2.value)===0){
+                        alert("Division impossible par 0");
+                        return;
+                    }
+                        let dvi=Number(n1.value)/Number(n2.value);
+                        output.innerHTML=`<h3> Le quotient est ${dvi} </h3>`
+                        break
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Calculatrice JS</title>
+
+<style>
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:#f4f4f4;
+    font-family:Arial, sans-serif;
+}
+
+.calculatrice{
+    background:#222;
+    padding:20px;
+    border-radius:10px;
+    width:260px;
+}
+
+#ecran{
+    width:100%;
+    height:50px;
+    margin-bottom:15px;
+    font-size:22px;
+    text-align:right;
+    padding:5px;
+}
+
+button{
+    width:55px;
+    height:50px;
+    margin:3px;
+    font-size:18px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#ccc;
+}
+
+.btn-operateur{
+    background:orange;
+    color:white;
+}
+
+.btn-clear{
+    background:red;
+    color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="calculatrice">
+    <input type="text" id="ecran" disabled>
+
+    <div>
+        <button onclick="ajouter('7')">7</button>
+        <button onclick="ajouter('8')">8</button>
+        <button onclick="ajouter('9')">9</button>
+        <button class="btn-operateur" onclick="ajouter('/')">÷</button>
+    </div>
+
+    <div>
+        <button onclick="ajouter('4')">4</button>
+        <button onclick="ajouter('5')">5</button>
+        <button onclick="ajouter('6')">6</button>
+        <button class="btn-operateur" onclick="ajouter('*')">×</button>
+    </div>
+
+    <div>
+        <button onclick="ajouter('1')">1</button>
+        <button onclick="ajouter('2')">2</button>
+        <button onclick="ajouter('3')">3</button>
+        <button class="btn-operateur" onclick="ajouter('-')">−</button>
+    </div>
+
+    <div>
+        <button onclick="ajouter('0')">0</button>
+        <button onclick="ajouter('.')">.</button>
+        <button class="btn-clear" onclick="effacer()">C</button>
+        <button class="btn-operateur" onclick="ajouter('+')">+</button>
+    </div>
+
+    <div>
+        <button style="width:100%" onclick="calculer()">=</button>
+    </div>
+</div>
+
+<script>
+function ajouter(valeur){
+    document.getElementById("ecran").value += valeur;
+}
+
+function effacer(){
+    document.getElementById("ecran").value = "";
+}
+
+function calculer(){
+    try{
+        document.getElementById("ecran").value =
+        eval(document.getElementById("ecran").value);
+    }
+    catch{
+        alert("Erreur");
+    }
+}
+</script>
+
+</body>
+</html>

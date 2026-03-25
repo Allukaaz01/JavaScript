@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label for="sel">Choisir votre article</label>
+        <select id="sel">
+            <option value="1">clavier Bilingue</option>
+            <option value="2">souris optique </option>
+            <option value="3">phone</option>
+            <option value="4">chaise roulante</option>
+        </select>
+    </div>
+    <div>
+        <label>Taper la quantité achetée</label>
+        <input type="text" id="qte">
+
+    </div>
+    <button onclick="Commander()" id="btn">Commande</button>
+    <div>
+        <labe>Le montant à payer</label>
+        <input type="text" id="prix">
+    </div>
+
+
+    <script>
+        const Article=[
+            {id:100,designation:"Clavier Bilingue",prix:30.15},
+            {id:200,designation:"Souris optique",prix:31.45},
+            {id:300,designation:"phone",prix:1500},
+            {id:400,designation:"chaise roulante",prix:800}
+        ]
+
+        let pa=document.getElementById("prix")
+        let qt=document.getElementById("qte")
+        let art=document.getElementById("sel")
+        function Commander(){
+            let sed=Article.find(art.value)
+            let prx=sed["prix"]
+
+            let ix=prx*qt
+            document.getElementById("prix").value=ix
+        }
+    </script>
+
+</body>
+</html>

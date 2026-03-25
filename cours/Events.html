@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript</title>
+  <style>
+    body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-size: 24px;
+    }
+    .btn-click{
+      background-color: rgba(255, 0, 0, 0.628);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 8px;
+      width: 70px;
+      cursor: pointer;
+    }
+    button {
+      background-color: red;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 8px;
+      width:  70px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Learning JavaScript</h1>
+    <label for="txt">Taper votre nom:</label>
+    <input type="text" id="txt"><br>
+    <label for="ville">Choississez votre ville:</label>
+    <select>
+      <option value="casa">Casablanca</option>
+      <option value="rabat">Rabat</option>
+      <option value="fes">Fes</option>
+      <option value="tanger">tanger</option>
+    </select><br>
+    <a href="https:/www.google.com" target="_blank">google</a><span></span>
+    <button>valider</button>
+
+  </div>
+  <script>
+    //afficher une alerte de "Bienvenue"
+    //et mettre le curseur dans le champ texte
+    //dés le chargement de la page
+    const txt=document.getElementById("txt");
+    const sp=document.querySelector('.container span');
+    let btn=document.querySelector('button')
+    /* window.addEventListener('load',function(){
+        alert("Bienvenue à ma page");
+        txt.focus();
+    }) */
+    //mettre le texte en majuscule pendant 
+    //la saisie
+    /* txt.addEventListener('keyup',function(){
+      let maj=txt.value.toUpperCase();
+      txt.value=maj;
+    }) */
+    //limiter la saisi
+    /* txt.addEventListener('keyup', function(){
+     const L=txt.value.length;
+     if (L<=10)
+    {
+     sp.style.textAlign='center';
+     sp.textContent=L;
+    }
+    else {
+     const L10=txt.value.slice(0,10);
+     txt.value=L10;
+     alert("La saisie est limitee a 10 caracteres")
+    }
+    }) */
+    txt.addEventListener('blur', () => {
+       let age=Number(txt.value);
+       if(age<18 || age>26){
+         sp.textContent="votre age doit etre entre 18 et 26";
+         sp.stlye.border='1px solid red';
+         txt.value='';
+         txt.focus();
+       }
+       else {
+         sp.textContent="";
+         sp.style='none';
+       }
+    }) 
+
+    btn.addEventListener('mouseover', () => {
+     btn.setAttribute('class','btn-click');
+    })
+    btn.addEventListener('mouseout', () => {
+     btn.removeAttribute('class');
+    })
+    /* const select=document.querySelector('.container select');
+    select.addEventListener('change', () => {
+     sp.textContent=`votre ville natale est:${select.value}`;
+    }) */
+    document.addEventListener('keydown', (e) => {
+      console.log(e);//l'objet e renvoie des infos sur l'evenement en question. les infos se different selon l'evenement declenche
+      console.log(e.type);//le type d'evenement
+      console.log(e.key);//la touche enfoncee
+      console.log(e.keyCode);//le code ASCII de la touche enfoncee
+      console.log(e.target);//l'element sur lequel l'evenement a ete declenche
+      if (e.key === 'z' || e.key === 'Z'){
+        e.target.style.backgroundColor='purple'
+      }
+      else if (e.key === 'x' || e.key === 'X'){
+        e.target.style.backgroundColor='red';
+      }
+      else if (e.key === 'c' || e.key === 'C'){
+        e.target.style.backgroundColor='lime';
+      }
+      else if (e.key === 'v' || e.key === 'V'){
+        e.target.style.backgroundColor='yellow';
+      }
+      else if (e.key === 'b' || e.key === 'B'){
+        e.target.style.backgroundColor='brown';
+      }
+      else if (e.key === 'n' || e.key === 'N'){
+        e.target.style.backgroundColor='orange';
+      }
+      else {
+        e.target.style.backgroundColor='white';
+      }
+    })
+    const link=document.querySelector('.container a');
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      sp.textContent=' link to google canceled'
+    })
+    btn.addEventListener('click', mafonction);
+    let cpt=0;
+    function mafonction(){
+      cpt++;
+      sp.textContent=`you have clicked ${cpt} time(s)`;
+    }
+  
+  
+  </script>
+</body>
+</html>
+
+
+

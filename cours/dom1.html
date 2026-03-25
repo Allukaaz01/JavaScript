@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .maclass{
+            background-color: yellow;
+            color:red;
+            font-size: 20px;
+            border: 1px dashed red;
+            text-align: center;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Learn JS</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sapiente deleniti quibusdam animi repellendus quidem laborum minima, est libero pariatur!</p>
+    </div>
+    <button id="btn1">Appliquer style1</button>
+    <button id="btn2">Appliquer style2</button>
+    <button id="btn3">Retirer style </button>
+    <script>
+        let para=document.querySelector("p");
+        let btn1=document.querySelector("#btn1");
+        let btn2=document.querySelector("#btn2");
+        let btn3=document.querySelector("#btn3");
+        //attacher au boutton btn l'evenement click
+        //en
+        btn1.addEventListener("click",function(){
+            //un couleur de fond noir pour le para
+            para.style.background="black";
+            para.style.color="white";
+            para.style.fontSize="24px"
+            para.style.textAlign="center"
+            para.style.margin="10px"
+            para.style.border="1px dashed red"
+            para.style.fontFamily="courrier new"
+        })
+        btn2.addEventListener("click",function(){
+            para.classList.add("maclass");
+            
+        })
+        btn3.addEventListener("click",function(){
+            para.classList.remove("maclass");
+        })
+        //retirer style
+    </script>
+</body>
+</html>

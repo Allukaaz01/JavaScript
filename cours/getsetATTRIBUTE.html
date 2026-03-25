@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attribute</title>
+    <style>
+        .contain{
+            width: 600px;
+            margin: 50px auto;
+        }
+        img{
+            width:50% ;
+        }
+        .maclass{
+            color: yellow;
+            background-color: blueviolet;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="contain">
+        <h1>Learning JAVASCRIPT</h1>
+        <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, eveniet.</p>
+        <img title="image" src="Artur Beterbiev.jpeg">
+    </div>
+    <script>
+        //nous desirons lire la valeur de l'attribut src de l'element image
+        let imge=document.querySelector("img")
+        let  sc=imge.getAttribute("src")
+        console.log(sc)
+        // nous voulons modifier le width et height 
+        imge.setAttribute("title","Artur bietebiev")        
+        let para=document.querySelector("p")
+        //pour appliquer le style sur un element                                                                          
+        para.setAttribute("class","maclass")     
+    </script>
+</body>
+</html>

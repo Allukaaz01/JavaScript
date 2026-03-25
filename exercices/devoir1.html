@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="contain">
+        <h1>Age Calculator</h1>
+        <p>Enter your BirthDate</p>
+        <input type="date" >
+        <button>Calculer</button>
+        <div id="Result">
+
+        </div>
+    </div>
+    <script>
+        //let dt=document.querySelector("input[type=date]")
+        //let res=document.querySelector("#Result")
+        //let today=new Date()
+        //let dtb= new Date(dt.value)
+        //let btn=document.querySelector("button")
+        //
+        //btn.addEventListener("click",function(){
+        //    let diyr=today.getFullYear()-dtb.getFullYear()
+        //    let dimt=today.getMonth()-dtb.getMonth()
+        //    let dijr=today.getDate()-dtb.getDate()
+        //    if(diyr>0){
+        //        let yr=diyr
+        //        if(dimt==0){
+        //            let mt=dimt
+        //            if(dijr==0){
+        //                let jr=dijr
+        //                res.innerHTML=` Vous avez ${diyr} annee <br> ${dimt} mois <br> ${dijr} jours `
+        //            }
+        //        }
+        //    }
+        //})
+        
+            let dt = document.querySelector("input[type=date]")
+            let res = document.querySelector("#Result")
+            let btn = document.querySelector("button")
+            
+            btn.addEventListener("click", function(){
+
+             let today = new Date()
+             let dtb = new Date(dt.value)
+         
+             let diyr = today.getFullYear() - dtb.getFullYear()
+             let dimt = today.getMonth() - dtb.getMonth()
+             let dijr = today.getDate() - dtb.getDate()
+            if(diyr>0){
+                    if(dimt<0){
+                        diyr=diyr-1
+                        dimt=12+dimt
+                    }
+                    if(dimt>0){
+                        diyr=diyr
+                        dimt=dimt
+                    }
+                    function ipson(){
+                        
+                    }
+                    if(dijr>0){//date de naisance sghar mn date dyal today
+                        let f=dtb.getMonth()
+                        if(f===1||f===3||f===5||f===7||f===8||f===10||f===12 ){
+                            dijr=31+dijr
+                           
+
+                        }
+                        else{
+                            dijr=30+dijr
+                            
+                        }
+                    }
+                    else{
+                         let f=dtb.getMonth()
+                        if(f===0||f===2||f===4||f===6||f===7||f===9||f===11 ){
+                            dijr=31+dijr
+                            dimt=dimt-1
+                            diyr=diyr
+                        }
+                        else{
+                            dijr=30+dijr
+                            dimt=dimt-1
+                            diyr=diyr-1
+                        }
+
+                    }
+            
+                        res.innerHTML = `Vous avez ${diyr} année <br> ${dimt} mois <br> ${dijr} jours`
+                    }
+                    //
+                    
+                })
+        </script>
+</body>
+</html>
+
+
+
+<!--(dimt<0){
+                //    dimt=12+dimt
+                //}
+                //if(dijr<0){
+                    //    let f=dtb.getMonth()
+                    //    if(f==1||f==3||f==5||f==7||f==8||f==10||f==12 ){
+                        //        dijr=31+dijr
+                        //    }--> 

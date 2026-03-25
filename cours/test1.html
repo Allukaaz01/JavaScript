@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        fieldset{
+            border: 2px solid black;
+            width: 320px;
+            background-color: rgb(0, 0, 0);
+            height: 260px;
+            margin: 50px auto;
+        
+        }
+        .cal-body{
+            display: grid;
+            grid-template-columns: 22% 22% 22% 22%;
+            gap: 5%;
+            margin-right: 10px;
+        }
+        legend{
+            color: rgb(204, 137, 11);
+            font-weight: bolder;
+            font-size: 20px;
+        }
+        #answer{
+            width: 90%;
+            margin-bottom:30px;
+            padding: 15px;
+            background-color: antiquewhite;
+            border: none;
+            border-radius: 15px;
+        }
+        button{
+            margin-top: 4px;
+            background-color: rgb(233, 135, 15);
+            color: black;
+            font-size: bold;
+            font-weight: bolder;
+            height: 30px;
+            border-radius: 10px;
+            border: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>Calculatrice</legend>
+        <div>
+            <input id="answer" type="text" placeholder="Taper l'operation">
+        </div>
+        <div class="cal-body">
+            <button  id="del">Equal</button>
+            <button onclick="supprimer()" id="supp">DEL</button>
+            <button onclick="division()" id="cal-/">/</button>
+            <button onclick="multiplication() " id="cal-*">*</button>
+            <button onclick="soustraction()" id="cal--">-</button>
+            <button onclick="addition()" id="cal-+">+</button>
+            <button onclick="ninee()" id="cal-9">9</button>
+            <button onclick="eightt()" id="cal-8">8</button>
+            <button onclick="sevenn()" id="cal-7">7</button>
+            <button onclick="sixx()" id="cal-6">6</button>
+            <button onclick="fivee()" id="cal-5">5</button>
+            <button onclick="fourr()" id="cal-4">4</button>
+            <button onclick="three()" id="cal-3">3</button>
+            <button onclick="twoo()" id="cal-2">2</button>
+            <button onclick="onee()" id="cal-1">1</button>
+            <button onclick="zeroo()" id="cal-0">0</button>
+            <!--<button onclick="care()">carre</button>
+            <button onclick="supprimer()">supprimer</button>-->
+        </div>
+    </fieldset>
+    <script>
+            
+            let ans=document.getElementById("answer")
+            let del=document.getElementById("del")
+            //let supp=document.getElementById("supp").innerHTML;
+            //let divi=document.getElementById("cal-/").innerHTML;
+            //let mult=document.getElementById("cal-*").innerHTML;
+            //let sous=document.getElementById("cal--").innerHTML;
+            //let add=document.getElementById("cal-+").innerHTML;
+            
+            
+            function zeroo(){
+                ans.value+="0"
+            }
+            function onee(){
+                ans.value+="1"
+            }
+            function twoo(){
+                ans.value+="2"
+            }
+            function three(){
+                ans.value+="3";
+            }
+            function fourr(){
+                ans.value+="4"
+            }
+            function fivee(){
+                ans.value+="5";
+            }
+            function sixx(){
+                ans.value+="6"
+            }
+            function sevenn(){
+                ans.value+="7";
+            }
+            function eightt(){
+                ans.value+="8"
+            }
+            function ninee(){
+                ans.value+="9"
+            }
+            let op=0
+            let num1=ans.value
+            let num2=ans.value
+            function addition() {
+                num1=ans.value
+                ans.value=" "
+                op=1
+
+            }
+            function care() {
+                num1=ans.value
+                ans.value=" "
+                op=5
+
+            }
+            function soustraction() {
+                num1=ans.value
+                ans.value=" "
+                op=2
+
+            }
+            function multiplication() {
+                num1=ans.value
+                ans.value=" "
+                op=3
+            }
+            function division(){
+                num1=ans.value
+                ans.value=" "
+                op=4
+            }
+            function supprimer(){
+                ans.value=" "
+                ans.focus()
+            }
+            del.addEventListener("click",function equal(){
+                if(op==1){
+                    num2=ans.value
+                    ans.value=Number(num1)+Number(num2)
+                    }
+                if(op==2) {
+                    num2=ans.value
+                    ans.value=Number(num1)-Number(num2)
+                }
+                if(op==3) {
+                    num2=ans.value
+                    ans.value=Number(num1)*Number(num2)
+                }
+                if(op==4) {
+                    num2=ans.value
+                    if (num2==0){
+                        alert("Impossible de diviser sur le nombre 0 , Veuiller saisir un autre nombre ")
+                        ans.value=" "
+                        ans.focus()
+                    }
+                    else{
+                        ans.value=Number(num1)/Number(num2)
+                    }
+                }
+                if (op==5){
+                    num2=ans.value
+                    let g=num1
+                    
+                    for (let i =1;i<=Number(num2);i++){
+                        num1=num1*g
+                    }
+                    //do{
+                    //    num1=num1*g
+                    //    i++;
+                    //    //
+                    //    //2*2=4*2=6*2=12
+                    //}while(i<=num2)
+                    ans.value=num1
+                }
+            }
+            )
+    </script>
+</body>
+</html>

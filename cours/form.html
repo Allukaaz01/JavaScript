@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>learning java script</h1>
+    <label for="">taper votre email:</label>
+    <input type="email" id="el"><br>
+    <button id="btn">afficher</button>
+    <button onclick="reset()">reset</button><br>
+    <label for="">Utilisateur:</label>
+    <input type="text" id="uti"><br>
+    <label for="">domaine:</label>
+    <input type="text" id="dom"><br>
+    
+    <script>
+        const btn=document.getElementById("btn")
+        btn.addEventListener("click",Afficher)//or btn.addEventListener("click",()=>{ instruction})
+        function Afficher(){
+            let email=document.getElementById("el").value;
+            let path=email.split("@")
+            let user=path[0];
+            let dom=path[1];
+            document.getElementById("uti").value=user;
+            document.getElementById("dom").value=dom;
+        }
+        function reset(){
+            document.getElementById("el").value=" "
+            document.getElementById("uti").value=" "
+            document.getElementById("dom").value=" "
+            document.getElementById("el").focus()
+
+        }
+
+    </script>
+</body>
+</html>

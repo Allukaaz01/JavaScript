@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,tr,th,td{
+            border:3px solid black;
+            border-collapse:collapse;
+            
+            
+        }
+        table{
+            width: 250%
+        }
+        body{
+            width: 200px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div>
+        couleur
+        <input type="radio" value="red" name="clr" >Rouge
+        <input type="radio" value="blue" name="clr">Bleu
+    </div>
+    <div>
+        <p>Position</p>
+        <select id="pos">
+            <option value="right" name="position">right</option>
+            <option value="left" name="position">Gauche</option>
+            <option value="center" name="position">Centre</option>
+        </select>
+        
+    </div>
+    <button>Appliquer</button>
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>Rami</td>
+            <td>Ahmed</td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>Fathi</td>
+            <td>Khalid</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>Kamali</td>
+            <td>Ibrahim</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>Fahmi</td>
+            <td>Omar</td>
+        </tr>
+    </table>
+    
+    <script>
+        let tbl=document.querySelector("table")
+        let btn=document.querySelector("button")
+        let cl=document.querySelectorAll("input[type=radio]")
+        let po=document.querySelectorAll("option")
+        btn.addEventListener("click",function(){
+            if (cl[0].checked){
+                
+                tbl.style.backgroundColor="red"
+            }
+            else if (cl[1].checked){
+                tbl.style.backgroundColor="blue"
+            }
+            else{
+                alert("Veuillez choisir une couleur")
+            }
+            if(po[0].selected){
+
+                tbl.style.textAlign="right"
+            }
+            else if(po[1].selected){
+                tbl.style.textAlign="center"
+            }
+            else if(po[2].selected){
+                tbl.style.textAlign="left"
+            }
+        })
+    </script>
+    
+</body>
+</html>

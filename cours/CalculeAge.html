@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcule d'Age</title>
+</head>
+<body>
+    <div class="contain">
+        <h1>Age Calculator</h1>
+        <p>Enter your BirthDate</p>
+        <input type="date" >
+        <button>Calculer</button>
+        <div id="Result">
+
+        </div>
+    </div>
+    <script>
+        let dauj=new Date()
+        let birth= document.querySelector("input[type=date]")
+        let btn=document.querySelector("button")
+        let res=document.getElementById("Result")
+        btn.addEventListener("click", function(){
+           let dt=new Date(birth.value);
+           let today=new Date();
+           let age =today.getFullYear()-dt.getFullYear();
+           let diffmois =today.getMonth()-dt.getMonth();
+           let diffjours =today.getDate()-dt.getDate();
+           if(diffmois<0 || diffmois===0 && diffjours<0){
+            age--;
+           }
+           res.innerHTML=`<h3> votre âge est :${age} ans </h3>`;
+        })
+
+    </script>
+</body>
+</html>

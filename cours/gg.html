@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+    
+   // ===== Création du tableau =====
+let table = document.createElement("table");
+table.style.borderCollapse = "collapse";
+document.body.appendChild(table);
+
+// header
+let trHead = document.createElement("tr");
+["Numero", "Nom", "Note", "Action"].forEach(text => {
+    let th = document.createElement("th");
+    th.textContent = text;
+    th.style.border = "1px solid black";
+    th.style.padding = "5px";
+    trHead.appendChild(th);
+});
+table.appendChild(trHead);
+
+// ===== Inputs =====
+let container = document.createElement("div");
+document.body.appendChild(container);
+
+function createInput(labelText, id) {
+    let div = document.createElement("div");
+
+    let label = document.createElement("label");
+    label.textContent = labelText;
+
+    let input = document.createElement("input");
+    input.type = "text";
+    input.id = id;
+
+    div.appendChild(label);
+    div.appendChild(input);
+
+    container.appendChild(div);
+
+    return input;
+}
+
+let inpNum = createInput("Numero : ", "inp1");
+let inpNom = createInput("Nom : ", "inp2");
+let inpNote = createInput("Note : ", "inp3");
+
+// ===== Bouton =====
+let btn = document.createElement("button");
+btn.textContent = "Ajouter";
+document.body.appendChild(btn);
+
+// ===== Fonction Ajouter =====
+btn.onclick = function () {
+
+    if (inpNum.value === "" || inpNom.value === "" || inpNote.value === "") {
+        alert("Remplir tous les champs !");
+        return;
+    }
+
+    let tr = document.createElement("tr");
+
+    let td1 = document.createElement("td");
+    let td2 = document.createElement("td");
+    let td3 = document.createElement("td");
+    let td4 = document.createElement("td");
+
+    [td1, td2, td3, td4].forEach(td => {
+        td.style.border = "1px solid black";
+        td.style.padding = "5px";
+    });
+
+    td1.textContent = inpNum.value;
+    td2.textContent = inpNom.value;
+    td3.textContent = inpNote.value;
+
+    // ===== Edit =====
+    let editBtn = document.createElement("button");
+    editBtn.textContent = "Edit";
+
+    editBtn.onclick = function () {
+        inpNum.value = td1.textContent;
+        inpNom.value = td2.textContent;
+        inpNote.value = td3.textContent;
+    };
+
+    // ===== Delete =====
+    let deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+
+    deleteBtn.onclick = function () {
+        tr.remove();
+    };
+
+    td4.appendChild(editBtn);
+    td4.appendChild(deleteBtn);
+
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    tr.appendChild(td3);
+    tr.appendChild(td4);
+
+    table.appendChild(tr);
+
+    // reset inputs
+    inpNum.value = "";
+    inpNom.value = "";
+    inpNote.value = "";
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Tableau Dynamique JS</title>
+</head>
+<body>
+
+<script>
+    // ===== Création du tableau =====
+    let table = document.createElement("table");
+    table.style.borderCollapse = "collapse";
+    document.body.appendChild(table);
+
+    // header
+    let trHead = document.createElement("tr");
+    ["Numero", "Nom", "Note", "Action"].forEach(text => {
+        let th = document.createElement("th");
+        th.textContent = text;
+        th.style.border = "1px solid black";
+        th.style.padding = "5px";
+        trHead.appendChild(th);
+    });
+    table.appendChild(trHead);
+
+    // ===== Inputs =====
+    let container = document.createElement("div");
+    container.style.marginTop = "20px";
+    document.body.appendChild(container);
+
+    function createInput(labelText, id) {
+        let div = document.createElement("div");
+        div.style.marginBottom = "5px";
+
+        let label = document.createElement("label");
+        label.textContent = labelText;
+
+        let input = document.createElement("input");
+        input.type = "text";
+        input.id = id;
+        input.style.marginLeft = "5px";
+
+        div.appendChild(label);
+        div.appendChild(input);
+
+        container.appendChild(div);
+
+        return input;
+    }
+
+    let inpNum = createInput("Numero :", "inp1");
+    let inpNom = createInput("Nom :", "inp2");
+    let inpNote = createInput("Note :", "inp3");
+
+    // ===== Bouton Ajouter / Modifier =====
+    let btn = document.createElement("button");
+    btn.textContent = "Ajouter";
+    btn.style.marginTop = "10px";
+    document.body.appendChild(btn);
+
+    // ===== Variable pour garder la ligne en cours de modification =====
+    let ligneEnCours = null;
+
+    // ===== Fonction Ajouter / Modifier =====
+    btn.onclick = function () {
+
+        if (inpNum.value === "" || inpNom.value === "" || inpNote.value === "") {
+            alert("Remplir tous les champs !");
+            return;
+        }
+
+        // ===== MODIFICATION =====
+        if (ligneEnCours !== null) {
+            let tds = ligneEnCours.children;
+            tds[0].textContent = inpNum.value;
+            tds[1].textContent = inpNom.value;
+            tds[2].textContent = inpNote.value;
+
+            ligneEnCours = null;
+            btn.textContent = "Ajouter";
+
+        } else {
+            // ===== AJOUT =====
+            let tr = document.createElement("tr");
+
+            let td1 = document.createElement("td");
+            let td2 = document.createElement("td");
+            let td3 = document.createElement("td");
+            let td4 = document.createElement("td");
+
+            [td1, td2, td3, td4].forEach(td => {
+                td.style.border = "1px solid black";
+                td.style.padding = "5px";
+            });
+
+            td1.textContent = inpNum.value;
+            td2.textContent = inpNom.value;
+            td3.textContent = inpNote.value;
+
+            // ===== EDIT =====
+            let editBtn = document.createElement("button");
+            editBtn.textContent = "Edit";
+            editBtn.onclick = function () {
+                inpNum.value = td1.textContent;
+                inpNom.value = td2.textContent;
+                inpNote.value = td3.textContent;
+
+                ligneEnCours = tr;
+                btn.textContent = "Modifier";
+            };
+
+            // ===== DELETE =====
+            let deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "Delete";
+            deleteBtn.style.marginLeft = "5px";
+            deleteBtn.onclick = function () {
+                tr.remove();
+                if (ligneEnCours === tr) {
+                    ligneEnCours = null;
+                    btn.textContent = "Ajouter";
+                }
+            };
+
+            td4.appendChild(editBtn);
+            td4.appendChild(deleteBtn);
+
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            tr.appendChild(td3);
+            tr.appendChild(td4);
+
+            table.appendChild(tr);
+        }
+
+        // ===== Reset inputs =====
+        inpNum.value = "";
+        inpNom.value = "";
+        inpNote.value = "";
+    };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .new{
+            width: 280px;
+            height: 100%;
+            border: none;
+        }
+        .contain1{
+            width: 200px;
+            height: 150px;
+            margin-left: 250px;
+            border: 3px solid rgb(217, 217, 11);
+        }
+        .contain2{
+            width: 700px;
+            border: none;
+            
+        }
+        fieldset{
+            display: grid;
+            grid-template-columns: 23% 23% 23% 23%;
+            gap: 2%;
+        }
+        .zid1,.zid2,.zid3,.zid4{
+            width: 100%;
+            height: 70%;
+            border: 3px solid blueviolet;
+        }
+        
+    </style>
+</head>
+<body>
+    <fieldset class="contain1">
+        <img class="new">
+    </fieldset>
+     <fieldset class="contai1§n2">
+        <img class="zid1" src="Artur Beterbiev.jpeg">
+        <img class="zid2" src="Capture12.PNG">
+        <img class="zid3" src="Capturei.PNG">
+        <img class="zid4" src="EFM.PNG">
+
+    </fieldset>
+    <script>
+        let im1=document.querySelector(".zid1")
+        let im2=document.querySelector(".zid2")
+        let im3=document.querySelector(".zid3")
+        let im4=document.querySelector(".zid4")
+        let n=document.querySelector(".new")
+        im1.addEventListener("click",function(){
+            n.setAttribute("src","Artur Beterbiev.jpeg")
+        })
+        im2.addEventListener("click",function(){
+            n.setAttribute("src","Capture12.PNG")
+        })
+        im3.addEventListener("click",function(){
+            n.setAttribute("src","Capturei.PNG")
+        })
+        im4.addEventListener("click",function(){
+            n.setAttribute("src","EFM.PNG")
+        })
+    </script>
+</body>
+</html>

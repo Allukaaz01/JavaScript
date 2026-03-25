@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+    <label for=""> Taper le premier nombre :</label>
+    <input type="text" id="n1">
+    </div>
+    <div>
+    <label for=""> Taper le second nombre :</label>
+    <input type="text" id="n2">
+    </div>
+    
+    <label for="">choisir l operation:</label>
+    <input  type="radio" name="r" id=""  value="Addition">+
+    <input  type="radio" name="r" id="" value="Soustraction">-
+    <input  type="radio" name="r" id="" value="Multiplication">*
+    <input  type="radio" name="r" id="" value="9issma">/
+
+    <button>calculer</button>
+    <input type="text" id="resultat">
+<script>
+    let n1=document.getElementById('n1')
+    let n2=document.getElementById('n2')
+    let radios=document.querySelectorAll('input[type="radio"]')
+    let b=document.querySelector('button')
+    let resultat=document.querySelector('#resultat')
+    b.addEventListener('click',function(){
+        if (radios[0].checked){
+           let som=Number(n1.value)+Number(n2.value)
+            resultat.value=som
+        }
+        else  if (radios[1].checked){
+           let sous=Number(n1.value)-Number(n2.value)
+            resultat.value=sous
+        }
+        else  if (radios[2].checked){
+           let m=Number(n1.value)*Number(n2.value)
+            resultat.value=m
+        }
+        else if (radios[3].checked){
+            if(Number(n2.value)===0){
+                alert("on ne peut pas diviser par 0")
+                return
+            }
+            let d=Number(n1.value)/Number(n2.value)
+            resultat.value=d
+        }
+        else {
+            alert("voullez choisir une operation !")
+        }
+        
+    })
+    //le click sur chaque button affiche sa valeur 
+    radios.forEach(rad =>{
+        rad.addEventListener("click",function(){
+            alert(this.value)
+        })
+    })
+</script>
+</body>
+</html>

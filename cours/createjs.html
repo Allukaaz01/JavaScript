@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <script>
+        let h=document.createElement("h1")
+        h.textContent="Learning JavaScript"
+        document.body.appendChild(h)
+
+        let l=document.createElement("h2")
+        l.textContent="Les modules"
+        document.body.appendChild(l)
+
+        let ul=document.createElement("ul")
+        let li1=document.createElement("li")
+        let li2=document.createElement("li")
+        let li3=document.createElement("li")
+        let li4=document.createElement("li")
+        li1.textContent="Développement"
+        li1.value=1
+        li2.textContent="Réseau"
+        li2.value=2
+        li3.textContent="Gestion"
+        li3.value=3
+        li4.textContent="Commerce"
+        li4.value=4
+        document.body.appendChild(ul)
+        ul.appendChild(li1)
+        ul.appendChild(li2)
+        ul.appendChild(li3)
+        ul.appendChild(li4)
+
+        let pa=document.createElement("label")
+        pa.textContent="Taper le module à supprimer :"
+        document.body.appendChild(pa)
+
+        let inp=document.createElement("input")
+        document.body.appendChild(inp)
+
+        let di=document.createElement("div")
+
+        let bt=document.createElement("button")
+        bt.textContent="Supprimer"
+        document.body.appendChild(di)
+        di.appendChild(bt)
+        
+        bt.addEventListener("click",function(){
+            let a=inp.value
+            ul.forEach(element => {
+                i++
+                if (i==a){
+                    rep=confirm("Voulez-vraiment le supprimer ")
+                    if (rep){
+                        element.remove()
+                    }
+                }
+            })
+            })
+    </script>
+</body>
+</html>

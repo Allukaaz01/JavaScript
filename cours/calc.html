@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div>
+        <label for="p-nbre">Premier nombre :</label>
+        <input type="text" id="p-nbre">
+    </div>
+    
+    <div>
+        <label >Deuxieme nombre :</label>
+        <input type="text" id="s-nbre">
+    </div>
+    <div>
+         <input type="radio" value="1" name="op" >+     
+         <input type="radio" value="2" name="op" >-
+         <input type="radio" value="3" name="op" >*
+         <input type="radio" value="4" name="op" >/
+    </div>
+        <button>Calculer</button>
+    <div>
+        <label >resultat :</label>
+        <input type="text" id="res">
+    </div>
+    <script>
+        let a=document.querySelector("#p-nbre")
+        let b=document.querySelector("#s-nbre")
+        let radios=document.querySelectorAll('nput[type="radio"]')
+        let c=document.querySelector("button")
+        let d=document.querySelector("#res")
+
+        c.addEventListener("click",function(){
+            if(radios.checked){
+                if (radios==1){
+                    let som=Number(a.value)+Number(b.value)
+                    d.value=som
+                }
+            }
+        })
+    </script>
+        
+</body>
+</html>
