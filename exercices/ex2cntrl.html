@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .maclass{
+            text-align: center;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gestion des taches</h1>
+    <label>Taper une tâche : </label>
+    <input type="text">
+    <button>Add</button>
+    <ul></ul>
+    <script>
+        let btn=document.querySelector("button")
+        btn.classList.add("maclass")
+        let inp=document.querySelector("input[type=text]")
+        let task=[]
+        let ul=document.querySelector("ul")
+        function update_task(){
+            ul.innerHTML=""
+            task.forEach((x ,i) =>{
+                let li=document.createElement("li")
+                li.innerHTML=`${x} <button onclick="supprimer_task(${i})">Supprimer</button>`
+                ul.appendChild(li)
+                inp.focus()
+            })
+            
+        }
+        btn.addEventListener("click",function () {
+            if(!inp.value){
+                alert("Veuillez saisir  une tâche ")
+                inp.focus()
+                return
+            }
+            task.push(inp.value)
+            inp.value=""
+            update_task()
+        })
+        function supprimer_task(i){
+            let rep=confirm("voulez-vous vraiment supprimer cette tâche ?")
+            if(rep){
+                task.splice(i,1)
+                update_task()
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Saisie d'information</h1>
+    <form name="frm"> 
+        <div>
+        <label for="nom">Nom</label>
+        <input type="text" id="nom" name="nom">
+        </div>
+        <div>
+        <label for="prenom">Prenom</label>
+        <input type="text" id="prenom" name="prenom">
+        </div>
+        <div>
+            <label for="genre">Genre</label>
+            <input type="radio" name="genre" value="M">M 
+            <input type="radio" name="genre" value="F">F 
+        </div>
+        <div>
+            <label for="loisirs">Loisirs : </label><br>
+            <input type="checkbox" name="loisirs" value="vyg" >Voyage
+            <input type="checkbox" name="loisirs" value="lecture" >lecture
+            <input type="checkbox" name="loisirs" value="sport" >sport
+        </div>
+        <input type="submit" value="Valider">
+
+    </form>
+    <div id="output"></div>
+
+    <script>
+        // 1er methode
+        //let form=document.querySelector("form")
+        //let inpnom=document.querySelector("#nom")
+        //let inpprenom=document.querySelector("#prenom")
+        //let output=document.querySelector("#output")
+        // 2eme methode
+        //let frm=document.forms["frm"]
+        //let nom=frm["nom"]
+        //let prenom=frm["prenom"]
+        //3eme methode
+        let frm=document.forms.frm
+        let nom=frm.nom
+        let prenom=frm.prenom
+        let genre=frm.genre
+        let loisirs=frm.loisirs
+        
+           
+        let info=""
+        frm.addEventListener("submit",function(e){
+            e.preventDefault()
+            let n=`<ul>`
+        Array.from(loisirs).forEach(ele => {
+            if(ele.checked){
+                n+=`<li>${ele.value}</li>`
+            }
+        });
+        n+=`</ul>`
+            info+=`nom : ${nom.value}<br> prenom : ${prenom.value}<br> `
+            if(genre[0].checked){
+                info+=`genre : ${genre[0].value} <br>`
+            }
+            else{info+=`genre : ${genre[1].value} <br>`}
+            output.innerHTML=info + " "+ n
+           
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Partie II</title>
+<style>
+  body {
+      font-family: Arial;
+      background: #5554547d;
+  }
+  .form-container {
+      width: 500px;
+      margin: 50px auto;
+      border: 1px solid #000;
+      border-radius: 10px;
+      padding: 20px;
+      background: #fff;
+  }
+  h2 {
+      text-align: center;
+      margin-bottom: 10px;
+  }
+  .info {
+      border: 1px solid #aaa;
+      border-radius: 8px;
+      padding: 8px;
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 13px;
+  }
+  .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+  }
+  .full {
+      grid-column: span 2;
+  }
+  input, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #aaa;
+      box-sizing: border-box;
+  }
+  .buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+      gap: 10px;
+  }
+
+  button {
+      padding: 8px 20px;
+      border: none;
+      border-radius: 5px;
+      background: #127102;
+      color: white;
+      cursor: pointer;
+  }
+  button:hover {
+      background: #13710289;
+  }
+  h1 {
+    text-align: center;
+    text-decoration: underline;
+    color: red;
+  }
+</style>
+</head>
+<body>
+  <h1>Partie Pratique:</h1>
+  <div class="form-container">
+    <h2>Formulaire Client</h2>
+      <div class="info">Tous les champs sont obligatoires</div>
+        <form onsubmit="return validerFormulaire()">
+          <div class="form-grid">
+            <select id="civilite">
+                <option value="">Civilité</option>
+                <option>Mr</option>
+                <option>Mme</option>
+            </select>
+            <input type="text" id="nom" placeholder="Votre nom">
+            <input type="text" id="prenom" placeholder="Votre prénom">
+            <input type="text" id="date" placeholder="Votre naissance ex: 19/04/2002">
+            <input type="password" id="pass" placeholder="Mot de passe (5-10 caractères)">
+            <input type="password" id="pass2" placeholder="Confirmer mot de passe">
+            <input type="email" id="email" placeholder="Votre email" class="full">
+            <select id="region" class="full">
+              <option value="">Sélectionner votre région</option>
+              <option value="1">Tanger-Tétouan-Al Hoceïma</option>
+              <option value="2">L'Oriental</option>
+              <option value="3">Fès-Meknès</option>
+            </select>
+          </div>
+          <div class="buttons">
+            <button type="submit">Valider</button>
+            <button type="button">Retour</button>
+          </div>
+        </form>
+  </div>
+
+  <script>
+  // SELECT ELEMENTS (using IDs but with querySelector)
+  let form = document.querySelector("form");
+  let nom = document.querySelector("#nom");
+  let prenom = document.querySelector("#prenom");
+  let date = document.querySelector("#date");
+  let pass = document.querySelector("#pass");
+  let pass2 = document.querySelector("#pass2");
+  let email = document.querySelector("#email");
+  let region = document.querySelector("#region");
+  let retourBtn = document.querySelector('.buttons button[type="button"]');
+
+  // ================= VALIDATION =================
+  form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      if (!nom.value || !prenom.value || !date.value || !pass.value || !pass2.value || !email.value) {
+          alert("Tous les champs sont obligatoires");
+          return;
+      }
+
+      let regexPass = /^(?=.*\d).{5,10}$/;
+      if (!regexPass.test(pass.value)) {
+          alert("Mot de passe invalide (5-10 caractères avec chiffre)");
+          return;
+      }
+
+      if (pass.value !== pass2.value) {
+          alert("Les mots de passe ne correspondent pas");
+          return;
+      }
+
+      let regexDate = /^\d{2}\/\d{2}\/\d{4}$/;
+      if (!regexDate.test(date.value)) {
+          alert("Format de date invalide");
+          return;
+      }
+
+      if (region && region.value === "") {
+          alert("Veuillez sélectionner une région");
+          return;
+      }
+
+      alert("Inscription bien enregistrée");
+  });
+
+  // ================= RETOUR BUTTON =================
+  retourBtn.addEventListener("click", function() {
+      history.back();
+  });
+  </script>
+
+</body>
+</html>

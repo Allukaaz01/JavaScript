@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: monospace;
+      font-size: 16px;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+  
+  <script>
+    const div = document.querySelector('.output')
+    let inp=document.querySelector("input[type=date]")
+    let btn=document.querySelector('button');
+    let annee=400
+    function estBissextile(annee){
+      if ((annee % 4 === 0 && annee % 100 !== 0) || (annee % 400 === 0)){
+        return true;
+      }else {
+        return false;
+      }
+      
+    }
+    let ul = estBissextile();
+    div.textContent = ul
+  </script>
+</body>
+</html>
