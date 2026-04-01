@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border-collapse: collapse;
+            width: 50%;
+            margin: 2rem auto;
+        }
+    </style>
+</head>
+<body>                                     
+    <label>Taper Numero :</label>
+    <input type="text" id="searchNumero">
+    <button onclick="afficherStagiaire()">Afficher</button>
+    
+    <table border="1" id="tableStagiaires">
+        <tr>
+            <th>Numero</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Spécialité</th>
+            <th>Note Exam</th>
+            <th>Appréciation</th>
+        </tr>
+    </table>
+    <script>
+        const stagiares = [
+
+            { numero: 1111, nom: "Taha", Prenom: "Mohamed", specialite: "DWOFS", noteExam: 18.78 },
+            { numero: 1122, nom: "Taha", Prenom: "Mohamed", specialite: "DWOFS", noteExam: 9.47 },
+            { numero: 1133, nom: "Taha", Prenom: "Mohamed", specialite: "DWOFS", noteExam: 11.5 },
+            { numero: 1144, nom: "Taha", Prenom: "Mohamed", specialite: "DWOFS", noteExam: 6.99 },
+            { numero: 1155, nom: "Taha", Prenom: "Mohamed", specialite: "DWOFS", noteExam: 10.00 }
+        ];
+
+
+        function getAppreciation(note) {
+            if (note >= 10) return "Admis";
+            else if (note >= 8) return "Rattrapage";
+            else return "Redouble";
+        }
+
+        const tbody = document.querySelector("#tableStagiaires");
+
+        stagiares.forEach(stagiaire => {
+            const tr = document.createElement("tr");
+
+            tr.innerHTML = `
+                <td>${stagiaire.numero}</td>
+                <td>${stagiaire.nom}</td>
+                <td>${stagiaire.Prenom}</td>
+                <td>${stagiaire.specialite}</td>
+                <td>${stagiaire.noteExam}</td>
+                <td>${getAppreciation(stagiaire.noteExam)}</td>
+            `;
+
+            tbody.appendChild(tr);
+        });
+
+        function afficherStagiaire() {
+            const numero = document.getElementById("searchNumero").value;
+            const tbody = document.querySelector("#tableStagiaires");
+
+            tbody.innerHTML = "";
+
+            const stagiaire = stagiares.find(s => s.numero == numero);
+
+            if (stagiaire) {
+                const tr = document.createElement("tr");
+
+                tr.innerHTML = `
+                    <p>Numero : ${stagiaire.numero}</p>
+                    <p>Nom : ${stagiaire.nom}<p>
+                    <p>Prenom : ${stagiaire.Prenom}</p>
+                    <p>Specialite : ${stagiaire.specialite}</p>
+                    <p>Note : ${stagiaire.noteExam}</p>
+                    <p>Appreciation : ${getAppreciation(stagiaire.noteExam)}</p>
+                `;
+
+                tbody.appendChild(tr);
+            } else {
+                tbody.innerHTML = `<tr><td colspan="6">Aucun stagiaire trouvé</td></tr>`;
+            }
+        }
+    </script>
+
+</body>
+</html>
