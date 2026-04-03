@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      width: 90%;
+      max-width: 400px;
+      font-size: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      text-align: left;
+      box-sizing: border-box;
+    }
+    label {
+      font-weight: bold;
+    }
+    .input-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    input {
+      padding: 8px;
+      font-size: 1rem;
+      flex: 1;
+      text-align: center;
+      border: 1px solid grey;
+      border-radius: 4px;
+    }
+    .boutons {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    button {
+      background-color: green;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: rgba(0, 128, 0, 0.399);
+    }
+    .disabled {
+      background-color: red;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    <h1>Saisi d'informations</h1>
+    <div>
+      <label for="nom">Nom: </label>
+      <input type="text" id="nom">
+    </div>
+    <div>
+      <label for="prenom">Prenom: </label>
+      <input type="text" id="prenom">
+    </div>
+    <div>
+      <label for="genre">Genre: </label>
+      <input type="radio" id="genre" name="genre">M
+      <input type="radio" id="genre" name="genre">F
+    </div>
+    <div>
+      <label for="specialite">Specialite: </label>
+      <select name="spec" id="sp">
+        <option value="Developpement">Developpement</option>
+        <option value="ID">Infrastructure Digital</option>
+        <option value="RV">Realite Virtuel</option>
+        <option value="CBS">Cyber-Securite</option>
+      </select>
+    </div>
+    <div>
+      <label for="loisirs">Loisirs: </label>
+      <input type="checkbox" name="loisirs" value="Lecture"> Lecture
+      <input type="checkbox" name="loisirs" value="Sports"> Sports
+      <input type="checkbox" name="loisirs" value="Voyage"> Voyage
+      <input type="checkbox" name="loisirs" value="Internet"> Internet
+    </div>
+    <div class="boutons">
+      <button id="save">Sauvegarder</button>
+      <button id="display">Afficher</button>
+    </div>
+  </div>
+  
+  <script>
+    let nom=document.getElementById('nom')
+    let prenom=document.getElementById('prenom')
+    let genre=document.querySelectorAll('input[type=radio]')
+    let specialite=document.getElementById('sp')
+    let loisirs=document.querySelectorAll('input[type=checkbox]')
+    let erreur=document.getElementById('erreur')
+    let btn1=document.getElementById('save')
+    let btn2=document.getElementById('display')
+    btn1.addEventListener('click', function () {
+      let infos={};
+      infos['nom']=nom.value;
+      infos['prenom']=prenom.value;
+      infos['genre']=genre[0].checked? "M" : "F";
+      infos['specialite']=sp.value;
+      infos['loisirs']=loisirs;
+      infos['loisirs']=[];
+      loisirs.forEach(loisir => {
+        if(loisir.checked){
+          infos['loisirs'].push(loisir.value);
+        }
+      })
+      //Pour convertir un objet en string utiliser la methode JSON.stringify(tonObjet);
+      localStorage.setItem('Myinfos', JSON.stringify(infos));
+      alert('Sauvegarde des infos avec succes !');
+      btn1.disabled=true;
+      btn1.classList.add('disabled');
+    })
+    btn2.addEventListener('click', () => {
+      location.href='index.html'
+    })
+  </script>
+</body>
+</html>

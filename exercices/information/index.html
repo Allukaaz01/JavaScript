@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      width: 50%;
+      max-width: 350px;
+      font-size: 1.1rem;
+      text-align: left;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: rgb(67, 64, 246);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: rgba(67, 64, 246, 0.433);
+    }
+  </style>
+</head>
+<body>
+  <body onload="displayInfo()">
+  <div class="container">
+    <div id="output"></div>
+      <div>
+      <button>Retour</button>
+    </div>
+  </div>
+  
+  
+  <script>
+    let output=document.getElementById('output');
+    //convertir string en objet utiliser JSON.parse()
+    let infos=JSON.parse(localStorage.getItem('Myinfos'));
+    function displayInfo() {
+      let result = `<strong>Nom</strong> : ${infos["nom"]} <br/>`;
+      result += `<strong>Prenom</strong> : ${infos["prenom"]} <br/>`;
+      result += `<strong>Genre</strong> : ${infos["genre"]} <br/>`;
+      result += `<strong>Specialite</strong> : ${infos["specialite"]} <br/>`;
+      result += `<strong>Loisirs</strong> : <br/>`;
+      result += `<ul>`
+        infos["loisirs"].forEach(element => {
+          result += `<li>${element}</li>`
+        });
+        result += "</ul>"
+        output.innerHTML=result;
+    }
+    let btn=document.querySelector('button')
+    btn.addEventListener('click', function () {
+      location.href='information.html';
+    })
+  </script>
+</body>
+</html>

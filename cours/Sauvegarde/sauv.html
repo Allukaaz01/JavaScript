@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sauvegarde</title>
+  <style>
+  body {
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .container {
+    width: 90%;
+    max-width: 450px;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+    box-sizing: border-box;
+    font-weight: bold;
+  }
+  .input-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  input[type="text"] {
+    padding: 8px;
+    font-size: 1rem;
+    flex: 1;
+  }
+  .boutons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+  }
+  button {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: rgba(0, 128, 0, 0.399);
+  }
+  .disabled {
+    background-color: red;
+    pointer-events: none;
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <label for="nom">Taper votre nom: </label>
+    <div class="input-row">
+      <input type="text" id="nom" placeholder="Votre nom" />
+      <span id="error"></span>
+    </div>
+    <div class="boutons">
+      <button id="save">Sauvegarder</button>
+      <button id="display">Afficher</button>
+    </div>
+  </div>
+  <script>
+    let nom=document.getElementById('nom');
+    let erreur=document.getElementById('error');
+    let btn1=document.getElementById('save');
+    let btn2=document.getElementById('display');
+    function valider() {
+      let err="";
+      if(nom.value.length<3){
+        err+="le nom doit contenir au moins 3 caracteres";
+      }
+      let motif=/^[a-zA-Z]+$/;
+      let v=motif.test(nom.value);
+      if (!v){
+        err+="le nom doit contenir que des lettres";
+      }
+      if(err){
+        erreur.innerHTML=err;
+        return false;
+      }
+      return true;
+    }
+    btn1.addEventListener('click', () => {
+      if (valider()){
+        //localstorage(objet permettant de stocker une info d'une facon permanente); setitem(key.value);toujours de type string
+        localStorage.setItem('dev106', nom.value);
+        alert('Sauvegarde avec succes !');
+        nom.value="";
+        btn1.disabled=true;//desactivee
+        btn1.classList.add('disabled')
+      }
+    })
+    btn2.addEventListener('click', () => {
+      //acceder a la page index.html
+      location.href="index.html";
+    })
+  </script>
+</body>
+</html>

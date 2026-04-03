@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accueil</title>
+  <style>
+    body{
+      padding: 0;
+      margin:0;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .container {
+      width: 90%;
+      max-width: 550px;
+      display: flex;
+      flex-direction: column;
+      font-size: 2rem;
+      gap: 16px;
+      text-align: center;
+      box-sizing: border-box;
+      font-weight: bold;
+    }
+    .boutons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+    }
+    button {
+      background-color: rgb(67, 64, 246);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: rgba(67, 64, 246, 0.433);
+    }
+  </style>
+</head>
+<body onload="displayInfo()">
+  <div class="container">
+    <h3 id="info"></h3>
+  </div>
+  <div class="boutons">
+    <button>Retour</button>
+  </div>
+  
+  <script>
+    let info=document.querySelector('#info');
+    let btn=document.querySelector('button');
+    function displayInfo()
+    {
+    let nom=localStorage.getItem('dev106');
+    info.innerHTML=`Bienvenue <strong>${nom}</strong> à ma page`;  
+    }
+    btn.addEventListener('click', function () {
+      location.href='sauv.html';
+    })
+  </script>
+</body>
+</html>
