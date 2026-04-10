@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="jquery-4.0.0.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      height: 100vh;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    li {
+      text-align: left;
+      list-style: circle;
+    }
+    table, tr, td,th {
+      border: 1px solid #5e5a5a;
+      border-collapse: collapse;
+      padding: 8px 10px;
+      font-size: 0.8rem;
+      margin-bottom: 20px;
+    }
+    th {
+      background-color: rgba(211, 211, 211, 0.399);
+    }
+    .tableau {
+      display: flex;
+      justify-content: center;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h3>La synthese General d'une instruction JQuery est:</h3>
+    <ul>
+      <li>$(sel).action ou Sel est un element HTML ou un selecteur CSS;</li>
+      <li>action est la fonction JQuery a appliquer sur sel.</li>
+    </ul>
+    <table class="tableau">
+      <tr>
+        <th>Selecteur</th>
+        <th>CSS</th>
+        <th>JQuery</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>Element de balise</td>
+        <td>exemple de Balise p</td>
+        <td>$('p')</td>
+        <td>Selectionner tous les paragraphes du document</td>
+      </tr>
+      <tr>
+        <td>identifiant</td>
+        <td>nomId</td>
+        <td>$('#nomId')</td>
+        <td>Selectionner l'element Unique du document dont l'attrivut id est egal a nomId</td>
+      </tr>
+      <tr>
+        <td>classe</td>
+        <td>maClasse</td>
+        <td>$('.maClasse')</td>
+        <td>Selectionner tous les elements du document dont l'attribut est egal a maClasse</td>
+      </tr>
+    </table>
+    <table class="tableau">
+      <tr>
+        <th>JS</th>
+        <th>JQuery</th>
+      </tr>
+      <tr>
+        <td>value</td>
+        <td>val()</td>
+      </tr>
+      <tr>
+        <td>innerHTML</td>
+        <td>html()</td>
+      </tr>
+      <tr>
+        <td>innerText - textContent</td>
+        <td>text()</td>
+      </tr>
+      <tr>
+        <td>value</td>
+        <td>val()</td>
+      </tr>
+    </table>
+    <table class="tableau">
+      <tr>
+        <th style="text-align: center;" colspan="2">exemple</th>
+        
+      </tr>
+      <tr>
+        <td>$('li : first')</td>
+        <td>recupere le 1er element d'une list non ordonnee</td>
+      </tr>
+      <tr>
+        <td>$('li : last')</td>
+        <td>recupere le dernier element d'une list non ordonnee</td>
+      </tr>
+      <tr>
+        <td>$('li : eq(2)')</td>
+        <td>recupere l'element dans la 3e position d'une list non ordonnee</td>
+      </tr>
+      <tr>
+        <td>$('li : gt(n)')</td>
+        <td>recupere l'element dont la position est plus grand a n</td>
+      </tr>
+      <tr>
+        <td>$('li : even')</td>
+        <td>recupere tous les elements d'indice pairs</td>
+      </tr>
+      <tr>
+        <td>$('li : odd')</td>
+        <td>recupere tous les elements d'indice impairs</td>
+      </tr>
+      <tr>
+        <td>$('li : not(.maclasse)')</td>
+        <td>tous les elements saud ceux de l'attribut class = maclasse</td>
+      </tr>
+    </table>
+  </div>
+    
+  </div>
+
+  <script>
+    /*$(document).ready(function(){
+      let nom=$('input=type[text]')
+      $('button').on('click', function(){
+        alert(`Bienvenue ${nom.val()} a ma page web`)
+      })
+      $(function(){
+    })*/
+  </script>
+</body>
+</html>

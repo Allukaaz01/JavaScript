@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Document</title>
+ <style>
+ body{
+ padding: 0;
+ margin: 0;
+ font-family: 'Courier New', Courier, monospace;
+ font-size: 24px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ height: 100vh;
+ }
+ table, td, tr, th{
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 8px;
+ }
+ #com {
+  margin-top: 10px;
+  float: right;
+  padding: 8px 8px;
+  background-color: blue;
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+ }
+ #com:hover {
+  background-color: rgba(0, 0, 255, 0.508);
+ }
+ .commander {
+  background-color: green;
+ }
+</style>
+</head>
+<body onload="displayArticles()">
+ <div class="container">
+ <div class="ar"></div>
+ <div><button id="com" onclick="commander();">Afficher votre commande</button></div>
+ </div>
+
+ <script>
+ let articles=[
+ {"reference":1111,"designation":"clavier bilingue","prix":30.45},
+ {"reference":2222,"designation":"souris optique","prix":25.75},
+ {"reference":3333,"designation":"chaise roulante","prix":300.25},
+ {"reference":4444,"designation":"boite marqueur","prix":12.45}
+ ]
+ let ar=document.querySelector('.ar');
+ let btn=document.querySelector('#com');
+ let com=document.querySelectorAll('button');
+ let panier=[];
+ function displayArticles()
+ {
+ let out="<table>";
+ out +="<tr><th>Designation</th><th>Prix</th><th>Action</th></tr>"
+ articles.forEach((ar,index)=>{
+ out +=`<tr>
+ <td>${ar["designation"]}</td><td>${ar["prix"]}</td>
+ <td><button id="${index}" onclick="ajouter(${index});">Commander</button></td>
+ </tr>`;
+ })
+ 
+ out +="</table>"
+ ar.innerHTML=out;
+ }
+ //document.querySelector('#com').addEventListener('click',function(){})
+ function ajouter(index)
+ {
+ let btn=document.getElementById(`${index}`)
+ let elt=articles[index]
+ //console.log(articles[index]);
+ panier.push(elt);
+ btn.disabled=true;
+ }
+ function commander()
+ {
+ /* if(window.localStorage.getItem('panier')){
+ localStorage.removeItem('panier');
+ } */
+ // console.log(panier);
+ localStorage.setItem('panier',JSON.stringify(panier))
+ window.location.href="panier.html";
+ }
+ </script>
+</body>
+</html>

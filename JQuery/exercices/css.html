@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery-4.0.0.min.js"></script>
+    <style>
+        .maclasse{
+            background-color: black;
+            color:red;
+            font-size: 24px;
+            border:3px solid red;
+        }
+        img{
+            width:200px;
+            height: 100px;
+            object-fit: contain;
+        }
+        span{
+            font-weight: bold;
+            text-align: center;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Learning in JQuery</h1>
+    <!--<p id="para">Lorem, ipsum dolor.</p>
+    <button id="btn">Appliquer</button>-->
+    <ul>
+        <li>Python</li>
+        <li>JavaScript</li>
+        <li>HTML</li>
+        <li>Php</li>
+        <li>Java</li>
+    </ul>
+ 
+    <img  src="ma.avif">
+
+    <label>Taper un texte :</label>
+    <input type="text" id="txt"><span id="spn"></span><br>
+    
+
+    <!--<button id="af-btn">Afficher</button>-->
+    <hr>
+
+    <p>La paragraphe 1 dans notre cours JQuery</p>
+    <p>La paragraphe 2 dans notre cours JQuery</p>
+    <p>La paragraphe 3 dans notre cours JQuery</p>
+
+
+    <button id="in">fadein</button>
+    <button id="out">fadeout</button>    
+    <button id="toggle">fadetoggle</button>
+
+    <script>
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                $("#para").html("la paragraphe modifiée à partir de JQuery")
+                //Premier methode
+                //$("#para").css("color","red");
+                //$("#para").css("background","black");
+                //$("#para").css("font-Size","24px");
+                //$("#para").css("border","3px solid red");
+                //Deuxieme methode
+                //$("#para").css({
+                //    "color":"red",
+                //    "background":"black",
+                //    "font-Size":"24px",
+                //    "border":"3px solid red"
+                //})
+                //3eme methode
+                $("#para").addClass("maclasse")
+
+                
+
+               
+            })
+            $("#af-btn").on("click",function(){
+                    //pour ajouter un element
+                    //const elt=`<li>item from JQuery</li>`
+                    //$("ul").append(elt)
+
+                    // supprimer un element
+                    //$("li:eq(2)").remove()
+
+                    //Pour recuperer l'attribut d'un element 
+                    //alert($("img").attr("src"))
+
+                    //Pour modifier ou creer l'attribut d'un element 
+                    $("img").attr("src","ma1.jfif")
+                })
+            $("h1").on("mouseover",function(){
+
+                $(this).hide(1000)
+
+            }).on("mouseout",function(){
+
+                $(this).show(2000)
+
+            })   
+            $("#txt").on("keyup",function(){
+                let maxlength=10;
+                let l=$("#txt").val().length;
+                if (l<=maxlength){
+                    $("#spn").html(maxlength-l)
+                }
+                else{
+                    let g=$("#txt").val().slice(0,maxlength)
+                    $("#txt").val(g)
+                }
+            })
+
+            $("#out").on("click",function () {
+                $("p").fadeOut(1000);
+                //LA methode fadeout fait disparaitre un element
+                //  visible en reduisant son opacité jusqu'à 0
+                
+            })
+            $("#in").on("click",function () {
+                $("p").fadeIn(1000);
+                //LA methode fadein fait apparaitre un element
+                //  non visible en reduisant son opacité jusqu'à 0
+                
+            })
+            $("#toggle").on("click",function () {
+                $("p").fadeToggle(1000);
+                //LA methode fadetogle alterne entre fadein et fadeout 
+                // selon l'etat de l'element si l'element est masque 
+                // il aplique un fadein et vise verça
+            })
+        
+
+        })
+
+
+
+
+    </script>
+
+</body>
+</html>
